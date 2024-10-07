@@ -1,45 +1,21 @@
-print("""0-quitter
-1-écrire dans le répertoire
-2-rechercher dans le répertoire""")
-choix = input("Votre choix ? ")
-
-if choix == 0:
-    print("""0-quitter
-             1-écrire dans le répertoire
-             2-rechercher dans le répertoire""")
-    choix=input("Votre choix ? ")
-elif choix == 1:
-    choix2 = input("Nom (0 pour terminer) : ")
+def menu():
+    print("0-quitter")
+    print("1-écrire dans le répertoire")
+    print("2-rechercher dans le répertoire")
+    return int(input("Votre choix ? "))
     
-# tab=["toto",1, 2, 3]
+def ecriture():
+    nom = input("Nom (0 pour terminer) : ")
+    with open('nom', 'a') as f:
+        f.write(nom)
+    tel = input("Téléphone : ")
+    with open("repertoire", "") as f:
+        f.write(tel)
 
-    
+def lecture():
+    with open("repertoire", "r") as f:
+        f.read()
 
-print("""0-quitter
-         1-écrire dans le répertoire
-         2-rechercher dans le répertoire""")
-choix = input("Votre choix ? ")
-
-if choix == 0:
-    print("""0-quitter
-             1-écrire dans le répertoire
-             2-rechercher dans le répertoire""")
-    choix=input("Votre choix ? ")
-    
-elif choix == "1":
-    choix2 = input("Nom (0 pour terminer) : ")
-
-elif choix == "2":
-    nom = input("Entrer un nom :")
-    
-    if nom == tab():
-        def ecriture:
-            tab[0]=425213658
-      print("Le numero recherche est :")
-        
-    else: 
-        print("inconnu.")
-        ("""0-quitter
-             1-écrire dans le répertoire
-             2-rechercher dans le répertoire""")
-             
+menu()
+if menu() == 0:
+    ecriture()
