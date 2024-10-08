@@ -18,3 +18,31 @@ def lecture():
 
 while menu() == 0:
     menu()
+
+
+# la fonction menu permet d'afficher le menu ainsi que de demander le choix 
+#****************début de la fonction menu******************
+def menu():
+    print("0-quitter")
+    print("1-écrire dans le répertoire")
+    print("2-rechercher dans le répertoire")
+    return int(input("Votre choix ? "))
+#****************fin de la fonction menu********************
+
+#La fonction ecriture permet d'ecrire un nom dans le ficher texte nommé repertoire 
+#****************début de la fonction ecriture******************
+def ecriture():
+    nom = input("Nom (0 pour terminer) : ")
+    with open('nom', 'a') as f:
+        f.write(nom)
+    tel = input("Téléphone : ")
+    with open("repertoire", "") as f:
+        f.write(tel)
+#****************fin de la fonction ecriture********************
+
+#La fontion lecture permet d'afficher le numéro de telephone correpondant au nom 
+#****************début de la fonction lecture******************
+def lecture():
+    with open("repertoire", "r") as f:
+        f.read()
+#****************fin de la fonction lecture********************
