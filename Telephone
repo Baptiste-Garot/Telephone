@@ -6,16 +6,15 @@ def menu():
     
 def ecriture():
     nom = input("Nom (0 pour terminer) : ")
-    with open('nom', 'a') as f:
-        f.write(nom)
+    with open('repertoire.txt', 'a') as f:
+        f.write(nom + "\n")
     tel = input("Téléphone : ")
-    with open("repertoire", "") as f:
+    with open("repertoire.txt", "") as f:
         f.write(tel)
 
 def lecture():
     with open("repertoire", "r") as f:
         f.read()
 
-menu()
-if menu() == 0:
-    ecriture()
+while menu() == 0:
+    menu()
