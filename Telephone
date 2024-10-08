@@ -9,15 +9,26 @@ def ecriture():
     with open('repertoire.txt', 'a') as f:
         f.write(nom + "\n")
     tel = input("Téléphone : ")
-    with open("repertoire.txt", "") as f:
-        f.write(tel)
+    with open('repertoire.txt', 'a') as f:
+        f.write(tel + "\n")
+    return nom, tel
 
 def lecture():
-    with open("repertoire", "r") as f:
+    with open('repertoire.txt', 'r') as f:
         f.read()
+    recherche = input(" Entrer un nom : ")
+    for ligne in f:
+        if recherche == ligne:
+            print(recherche)
 
-while menu() == 0:
+ecriture()
+
+
+"""while menu() == 0:
     menu()
+while menu() == 1:
+    ecriture()"""
+
 
 
 # la fonction menu permet d'afficher le menu ainsi que de demander le choix 
