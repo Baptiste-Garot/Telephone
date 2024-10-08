@@ -46,3 +46,41 @@ def lecture():
     with open("repertoire", "r") as f:
         f.read()
 #****************fin de la fonction lecture********************
+
+DEMO:
+
+def menu():
+    print("0 - Quitter")
+    print("1 - Écrire dans le répertoire")
+    print("2 - Rechercher dans le répertoire")
+    return input("Votre choix ? ")
+
+def ecriture():
+    with open("repertoire.txt", "a") as fichier:
+        while True:
+            nom = input("Nom (0 pour terminer) : ")
+            if nom == "0":
+                break
+            numero = input("Numéro de téléphone : ")
+            fichier.write(f"{nom}:{numero}\n")
+
+def lecture():
+    nom_recherche = input("Entrer un nom : ")
+    with open("repertoire.txt", "r") as fichier:
+        for ligne in fichier:
+            nom, numero = ligne.strip().split(":")
+            if nom == nom_recherche:
+                print(f"Le numéro recherché est : {numero}")
+                return
+    print("Inconnu")
+
+while menu() == "0":
+    choix = menu()
+while choix == "0":
+        break
+while choix == "1":
+        ecriture()
+while choix == "2":
+        lecture()
+
+
