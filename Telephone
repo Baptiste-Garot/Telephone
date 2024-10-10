@@ -73,6 +73,10 @@ def lecture():
         f.read()
 #****************fin de la fonction lecture********************
 
+
+
+Comentaire
+
 # Initialisation de la variable saut
 saut = 0
 
