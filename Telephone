@@ -1,6 +1,10 @@
+"""
+projet-02
 
+Baptiste GAROT, William ..., Julie ...
+"""
 
-saut = 0
+saut_ligne = 0
 
 def menu():
     choix = 0
@@ -13,9 +17,6 @@ def menu():
             ecriture()
         elif choix == 2:
             lecture()
-
-
-
     
 def ecriture():
     nom = input("Nom (0 pour terminer) : ")
@@ -31,17 +32,16 @@ def ecriture():
 
 def lecture():
     with open('repertoire.txt', 'r') as f:
-        saut = 0
+        saut_ligne = 0
         recherche = input("Entrer un nom : ")
         for ligne in f:
             if ligne.startswith(recherche):
-                test = f.readlines(saut)
-                print(f"Le numéro recherché est : {test[0]}")
-                menu()
-            else:
-                print("Inconnu")
-                menu()
-        saut += 1
+                chercher_ligne = f.readlines(saut_ligne)
+                print(f"Le numéro recherché est : {chercher_ligne[0]}")
+                return menu()
+        saut_ligne += 1
+    print("Inconnu")
+
 
 
 
@@ -72,6 +72,7 @@ def lecture():
     with open("repertoire", "r") as f:
         f.read()
 #****************fin de la fonction lecture********************
+
 
 
 
