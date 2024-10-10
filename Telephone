@@ -1,46 +1,73 @@
 """
 projet-02
 
-Baptiste GAROT, William ..., Julie ...
+Baptiste GAROT, William NEDELEC, Julie DOMRANE
 """
 
-saut_ligne = 0
+open("repertoire.txt", "w")
+# réinitialiser le fichier repertoire
 
 def menu():
-    choix = 0
+    choix = 0  
+    # Initialisation du choix de menu
     while choix == 0:
+        # Boucle pour afficher le menu jusqu'à ce qu'un choix soit fait
         print("0-quitter")
         print("1-écrire dans le répertoire")
         print("2-rechercher dans le répertoire\n")
-        choix = int(input("Votre choix ? \n"))
+        choix = int(input("Votre choix ? \n"))  
+        # Demande du choix utilisateur
         if choix == 1:
-            ecriture()
+            ecriture()  
+            # Appel de la fonction d'écriture
         elif choix == 2:
-            lecture()
-    
+            lecture()  
+            # Appel de la fonction de lecture
+
 def ecriture():
-    nom = input("Nom (0 pour terminer) : ")
+    nom = input("Nom (0 pour terminer) : ")  
+    # Demande du nom
     if nom != "0":
-        with open('repertoire.txt', 'a') as f:
-            f.write(nom + "\n")
-        tel = input("Téléphone : ")
-        with open('repertoire.txt', 'a') as f:
-            f.write(tel + "\n")
-        ecriture()
+        with open('repertoire.txt', 'a') as f:  
+            # Ouverture du fichier en mode ajout
+            f.write(nom + "\n")  
+            # Écriture du nom dans le fichier
+        tel = input("Téléphone : ")  
+        # Demande du numéro de téléphone
+        with open('repertoire.txt', 'a') as f:  
+            # Ouverture du fichier en mode ajout
+            f.write(tel + "\n")  
+            # Écriture du numéro de téléphone dans le fichier
+        ecriture()  
+        # Appel récursif pour continuer à ajouter des entrées
     else:
-        menu()
+        menu()  
+        # Retour au menu principal
 
 def lecture():
-    with open('repertoire.txt', 'r') as f:
+    with open('repertoire.txt', 'r') as f:  
+        # Ouverture du fichier en mode lecture
         saut_ligne = 0
-        recherche = input("Entrer un nom : ")
+        # Initilisation de la variable saut_ligne
+        recherche = input("Entrer un nom : ")  
+        # Demande du nom à rechercher
         for ligne in f:
+            # Parcours les ligne dans le ficher
             if ligne.startswith(recherche):
-                chercher_ligne = f.readlines(saut_ligne)
-                print(f"Le numéro recherché est : {chercher_ligne[0]}")
+                # regarde si la ligne correspond a la recherche
+                ligne_tel = f.readlines(saut_ligne)
+                # trouver le numéro du telephone
+                print(f"Le numéro recherché est : {ligne_tel[0]}")
+                # Affichage du numéro trouvé
                 return menu()
+                # renvoyer vers menu
         saut_ligne += 1
-    print("Inconnu")
+        # ajout de 1 à saut_ligne
+    print("Inconnu")  
+    # Mettre Inconnu si le nom n'est pas trouvé
+
+
+
 
 
 
@@ -72,6 +99,9 @@ def lecture():
     with open("repertoire", "r") as f:
         f.read()
 #****************fin de la fonction lecture********************
+
+
+
 
 
 
