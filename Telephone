@@ -1,16 +1,21 @@
-"""
-projet-02
 
-Baptiste GAROT, William ..., Julie Domrane
-"""
 
 saut = 0
 
 def menu():
-    print("0-quitter")
-    print("1-écrire dans le répertoire")
-    print("2-rechercher dans le répertoire\n")
-    return int(input("Votre choix ? \n"))
+    choix = 0
+    while choix == 0:
+        print("0-quitter")
+        print("1-écrire dans le répertoire")
+        print("2-rechercher dans le répertoire\n")
+        choix = int(input("Votre choix ? \n"))
+        if choix == 1:
+            ecriture()
+        elif choix == 2:
+            lecture()
+
+
+
     
 def ecriture():
     nom = input("Nom (0 pour terminer) : ")
@@ -21,6 +26,8 @@ def ecriture():
         with open('repertoire.txt', 'a') as f:
             f.write(tel + "\n")
         ecriture()
+    else:
+        menu()
 
 def lecture():
     with open('repertoire.txt', 'r') as f:
@@ -30,15 +37,12 @@ def lecture():
             if ligne.startswith(recherche):
                 test = f.readlines(saut)
                 print(f"Le numéro recherché est : {test[0]}")
+                menu()
+            else:
+                print("Inconnu")
+                menu()
         saut += 1
 
-while True:
-    choix = menu()
-    if choix != 0:
-        if choix == 1:
-            ecriture()
-        elif choix == 2:
-            lecture()
 
 
 
