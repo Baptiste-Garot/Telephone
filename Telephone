@@ -73,40 +73,59 @@ def lecture():
         f.read()
 #****************fin de la fonction lecture********************
 
-DEMO:
+# Initialisation de la variable saut
+saut = 0
 
+# Fonction pour afficher le menu et gérer les choix de l'utilisateur
 def menu():
-    print("0 - Quitter")
-    print("1 - Écrire dans le répertoire")
-    print("2 - Rechercher dans le répertoire")
-    return input("Votre choix ? ")
+    choix = 0
+    while choix == 0:
+        # Affichage des options du menu
+        print("0-quitter")
+        print("1-écrire dans le répertoire")
+        print("2-rechercher dans le répertoire\n")
+        # Lecture du choix de l'utilisateur
+        choix = int(input("Votre choix ? \n"))
+        # Appel des fonctions en fonction du choix
+        if choix == 1:
+            ecriture()
+        elif choix == 2:
+            lecture()
 
+# Fonction pour écrire un nom et un numéro de téléphone dans le fichier
 def ecriture():
-    with open("repertoire.txt", "a") as fichier:
-        while True:
-            nom = input("Nom (0 pour terminer) : ")
-            if nom == "0":
-                break
-            numero = input("Numéro de téléphone : ")
-            fichier.write(f"{nom}:{numero}\n")
-
-def lecture():
-    nom_recherche = input("Entrer un nom : ")
-    with open("repertoire.txt", "r") as fichier:
-        for ligne in fichier:
-            if ligne.startswith(nom_recherche + ":"):
-                print(f"Le numéro recherché est : {ligne.split(':')[1].strip()}")
-                return
-    print("Inconnu")
-
-while True:
-    choix = menu()
-    if choix == "0":
-        break
-    elif choix == "1":
+    # Lecture du nom
+    nom = input("Nom (0 pour terminer) : ")
+    if nom != "0":
+        # Écriture du nom dans le fichier
+        with open('repertoire.txt', 'a') as f:
+            f.write(nom + "\n")
+        # Lecture du numéro de téléphone
+        tel = input("Téléphone : ")
+        # Écriture du numéro de téléphone dans le fichier
+        with open('repertoire.txt', 'a') as f:
+            f.write(tel + "\n")
+        # Appel récursif de la fonction pour ajouter d'autres entrées
         ecriture()
-    elif choix == "2":
-        lecture()
     else:
-        print("Choix invalide, veuillez réessayer.")
+        # Retour au menu principal
+        menu()
+
+# Fonction pour rechercher un nom dans le fichier et afficher le numéro associé
+def lecture():
+    with open('repertoire.txt', 'r') as f:
+        # Lecture du nom à rechercher
+        recherche = input("Entrer un nom : ")
+        for ligne in f:
+            # Vérification si la ligne commence par le nom recherché
+            if ligne.strip() == recherche:
+                # Lecture et affichage du numéro de téléphone
+                tel = next(f).strip()
+                print(f"Le numéro recherché est : {tel}")
+                menu()
+                return
+        # Si le nom n'est pas trouvé
+        print("Inconnu")
+        menu()
+
 
