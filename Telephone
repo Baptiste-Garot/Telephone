@@ -60,11 +60,13 @@ def lecture():
                 print(f"Le numéro recherché est : {ligne_tel[0]}")
                 # Affichage du numéro trouvé
                 return menu()
-                # renvoyer vers menu
+                # renvoyer vers le menu
         saut_ligne += 1
         # ajout de 1 à saut_ligne
-    print("Inconnu")  
+    print("Inconnu\n")
     # Mettre Inconnu si le nom n'est pas trouvé
+    return menu()
+    # renvoyer vers le menu
 
 
 
